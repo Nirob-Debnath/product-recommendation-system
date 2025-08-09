@@ -19,50 +19,61 @@ const NavBar = () => {
     }
 
     const links = <>
-        <li><NavLink to="/">Home</NavLink></li>
-        <li><NavLink to="/queries">Queries</NavLink></li>
+        <li><NavLink to="/" className="nav-link">Home</NavLink></li>
+        <li><NavLink to="/queries" className="nav-link">Queries</NavLink></li>
         {
-            user && <>
-                <li><NavLink to="/recommendationsforme">Recommendation For Me</NavLink></li>
-                <li><NavLink to="/myqueries">My Queries</NavLink></li>
-                <li><NavLink to="/myrecommendations">My Recommendations</NavLink></li>
-            </>
+            user ? <>
+                <li><NavLink to="/recommendationsforme" className="nav-link">Recommendations For Me</NavLink></li>
+                <li><NavLink to="/myqueries" className="nav-link">My Queries</NavLink></li>
+                <li><NavLink to="/myrecommendations" className="nav-link">My Recommendations</NavLink></li>
+            </> : <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
         }
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                        {links}
-                    </ul>
+        <nav
+            className="sticky top-0 left-0 w-full z-50 shadow-sm"
+            style={{
+                background: 'var(--color-primary)',
+                color: 'var(--color-text-light)'
+            }}
+        >
+            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center gap-4">
+                {/* Left: Logo */}
+                <div className="flex items-center gap-2">
+                    <NavLink to="/" className="flex items-center gap-2">
+                        <img src="/vite.svg" alt="Logo" className="h-6 w-6" />
+                        <span className="text-xl font-bold tracking-tight" style={{ color: 'var(--color-accent)' }}>Suggest-IQ</span>
+                    </NavLink>
                 </div>
-                <NavLink className="text-xl font-bold text-[#5f5cff]" to="/">Suggest-IQ</NavLink>
-            </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+
+                {/* Center: Desktop Menu */}
+                <ul className="hidden md:flex items-center gap-6 text-base font-medium flex-grow justify-center">
                     {links}
                 </ul>
-            </div>
-            <div className="navbar-end gap-4">
-                <button className='cursor-pointer' onClick={toggleTheme}>
-                    {theme === 'light' ? '🌙' : '☀️'}
-                </button>
-                {
-                    user ? <button onClick={handleSignOut} className='btn btn-primary'>Sign Out</button> :
-                        <>
-                            <NavLink to="/login" className="btn btn-primary">Login</NavLink>
-                        </>
-                }
 
+                {/* Right: Theme Toggle & Auth */}
+                <div className="flex items-center gap-3">
+                    <button className="text-xl" onClick={toggleTheme} title="Toggle theme">
+                        {theme === 'light' ? '🌙' : '☀️'}
+                    </button>
+                    {user && (
+                        <button onClick={handleSignOut} className="button-filled">Sign Out</button>
+                    )}
+                    {/* Mobile Menu */}
+                    <div className="md:hidden dropdown">
+                        <button tabIndex={0} className="btn btn-ghost p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </button>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow rounded-box w-52 bg-white text-black z-50">
+                            {links}
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        </nav>
     );
 };
 

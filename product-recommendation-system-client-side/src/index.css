@@ -3,38 +3,50 @@
 @import "flowbite/src/themes/default";
 
 :root {
-  --color-primary: #2563eb;      /* Blue-600 */
-  --color-secondary: #64748b;    /* Slate-500 */
-  --color-accent: #fbbf24;       /* Amber-400 */
-  --color-bg: #f8fafc;           /* Slate-50 */
-  --color-bg-dark: #1e293b;      /* Slate-800 */
-  --color-text: #1e293b;         /* Slate-800 */
-  --color-text-light: #f8fafc;   /* Slate-50 */
-  --border-radius: 12px;
+    --color-primary: #6366f1;     /* Indigo-500 */
+    --color-secondary: #334155;    /* Slate-700 */
+    --color-accent: #fbbf24;      /* Amber-400 */
+    --color-bg: #f9fafb;          /* Gray-50 */
+    --color-bg-dark: #18181b;     /* Gray-900 */
+    --color-text: #18181b;        /* Gray-900 */
+    --color-text-light: #f9fafb;  /* Gray-50 */
+    --border-radius: 12px;
 }
 
-/* Dark mode */
 [data-theme="dark"] {
-  --color-bg: #1e293b;
-  --color-text: #f8fafc;
+    --color-bg: #18181b;
+    --color-text: #f9fafb;
 }
 
 .navbar {
-  background: var(--color-primary);
-  color: var(--color-text-light);
-  border-radius: 0;
-  width: 100vw;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    border-radius: 0;
+    width: 100vw;
+}
+
+.nav-link {
+    color: var(--color-text-light);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background 0.2s;
+}
+
+.nav-link.active,
+.nav-link:hover {
+    background: none;
+    color: var(--color-accent);
 }
 
 .button-filled {
-  background: var(--color-primary);
-  color: var(--color-text-light);
-  border-radius: var(--border-radius);
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    border-radius: var(--border-radius);
 }
 
 .button-outline {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-  border-radius: var(--border-radius);
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
 }
