@@ -1,3 +1,40 @@
 @import "tailwindcss";
 @plugin "daisyui";
 @import "flowbite/src/themes/default";
+
+:root {
+  --color-primary: #2563eb;      /* Blue-600 */
+  --color-secondary: #64748b;    /* Slate-500 */
+  --color-accent: #fbbf24;       /* Amber-400 */
+  --color-bg: #f8fafc;           /* Slate-50 */
+  --color-bg-dark: #1e293b;      /* Slate-800 */
+  --color-text: #1e293b;         /* Slate-800 */
+  --color-text-light: #f8fafc;   /* Slate-50 */
+  --border-radius: 12px;
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --color-bg: #1e293b;
+  --color-text: #f8fafc;
+}
+
+.navbar {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  border-radius: 0;
+  width: 100vw;
+}
+
+.button-filled {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  border-radius: var(--border-radius);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--border-radius);
+}
