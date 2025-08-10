@@ -38,7 +38,7 @@ const NavBar = () => {
                 color: 'var(--color-text-light)'
             }}
         >
-            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center gap-4">
+            <div className="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-center gap-4">
                 {/* Left: Logo */}
                 <div className="flex items-center gap-2">
                     <NavLink to="/" className="flex items-center gap-2">

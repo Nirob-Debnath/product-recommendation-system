@@ -104,7 +104,7 @@ const AddQueries = () => {
                     <textarea name="additionalnotes" className="textarea w-full" placeholder="Any extra comments or thoughts?" required />
                 </fieldset>
 
-                <input type="submit" className="btn btn-primary col-span-1 md:col-span-2 mt-6" value="Post Query" />
+                <input type="submit" className="btn btn-primary text-color-text-light col-span-1 md:col-span-2 mt-6" value="Post Query" />
             </form>
         </div>
     );

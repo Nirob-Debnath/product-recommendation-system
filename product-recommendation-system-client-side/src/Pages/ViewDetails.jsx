@@ -137,7 +137,7 @@ const ViewDetails = () => {
     };
 
     return (
-    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg min-h-screen px-4 md:px-8">
+        <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg min-h-screen px-4 md:px-8">
             <h1 className="text-3xl font-bold text-center mb-6">Product Details</h1>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -154,7 +154,7 @@ const ViewDetails = () => {
                     <div className="mt-4 flex gap-4">
                         <button
                             onClick={handleLike}
-                            className={`btn btn-accent`}
+                            className={`btn btn-primary`}
                         >
                             {hasLiked ? 'Remove Recommendation' : 'Recommend'} ({typeof recommendationCount === 'number' ? recommendationCount : currentLikes.length})
                         </button>
@@ -216,7 +216,7 @@ const ViewDetails = () => {
                             ></textarea>
                             <button
                                 onClick={handleAddComment}
-                                className="mt-2 px-4 py-2 bg-blue-600 text-white rounded"
+                                className="mt-2 px-4 py-2 btn btn-primary"
                             >
                                 Add Comment
                             </button>

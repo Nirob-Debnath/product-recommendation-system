@@ -35,9 +35,6 @@ const QueryCard = ({ query, querys, setQuery }) => {
         });
     };
 
-    // Define a single button color class for all buttons
-    const btnColorClass = "bg-blue-600 hover:bg-blue-700";
-
     return (
         <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100
             flex flex-col justify-between h-[400px]">
@@ -60,19 +57,19 @@ const QueryCard = ({ query, querys, setQuery }) => {
 
                 {/* Buttons */}
                 <div className="flex justify-between mt-4 gap-2">
-                    <Link to={`/viewdetails/${_id}`} className="flex-1 min-w-0">
-                        <button className={`w-full btn text-white ${btnColorClass}`}>
+                        <Link to={`/viewdetails/${_id}`} className="flex-1 min-w-0">
+                            <button className="w-full btn btn-primary text-color-text-light">
                             View
                         </button>
                     </Link>
-                    <Link to={`/updatedetails/${_id}`} className="flex-1 min-w-0">
-                        <button className={`w-full btn text-white ${btnColorClass}`}>
+                        <Link to={`/updatedetails/${_id}`} className="flex-1 min-w-0">
+                            <button className="w-full btn btn-primary text-color-text-light">
                             Edit
                         </button>
                     </Link>
-                    <button
-                        onClick={() => handleDelete(_id)}
-                        className={`flex-1 btn text-white w-full min-w-0 ${btnColorClass}`}
+                        <button
+                            onClick={() => handleDelete(_id)}
+                            className="flex-1 btn btn-primary text-color-text-light w-full min-w-0"
                     >
                         Delete
                     </button>
