@@ -137,7 +137,7 @@ const ViewDetails = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg min-h-screen">
+    <div className="max-w-4xl mx-auto my-10 p-6 bg-white shadow-lg rounded-lg min-h-screen px-4 md:px-8">
             <h1 className="text-3xl font-bold text-center mb-6">Product Details</h1>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -154,7 +154,7 @@ const ViewDetails = () => {
                     <div className="mt-4 flex gap-4">
                         <button
                             onClick={handleLike}
-                            className={`px-4 py-2 rounded ${hasLiked ? 'bg-red-500' : 'bg-blue-500'} text-white`}
+                            className={`btn btn-accent`}
                         >
                             {hasLiked ? 'Remove Recommendation' : 'Recommend'} ({typeof recommendationCount === 'number' ? recommendationCount : currentLikes.length})
                         </button>

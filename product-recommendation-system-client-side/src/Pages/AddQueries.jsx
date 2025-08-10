@@ -60,7 +60,7 @@ const AddQueries = () => {
     };
 
     return (
-        <div className='px-6 md:px-24 py-12 min-h-screen'>
+    <div className='px-4 md:px-8 py-12 min-h-screen'>
             <div className='text-center'>
                 <h1 className='text-4xl md:text-6xl font-bold'>Add New Query</h1>
                 <p className='my-6 text-gray-600 max-w-3xl mx-auto'>

@@ -7,32 +7,46 @@ const Home = () => {
     return (
         <main className="bg-[var(--color-bg)] text-[var(--color-text)]">
             {/* 1. Hero/Slider Section */}
-            <section className="w-full flex flex-col md:flex-row items-center justify-center py-12 bg-[var(--color-primary)] text-[var(--color-text-light)]">
-                {/* Left: Hero/Slider (60%) */}
-                <div className="w-full md:w-[60%] flex justify-center mb-8 md:mb-0">
-                    <div className="w-full max-w-2xl">
-                        <SwiperComponent />
+            <section className="w-full py-12 bg-[var(--color-primary)] text-[var(--color-text-light)]">
+                <div className="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-center gap-8">
+                    {/* Left: Hero/Slider (60%) */}
+                    <div className="w-full md:w-[60%] flex justify-center">
+                        <div className="w-full max-w-2xl">
+                            <SwiperComponent />
+                        </div>
                     </div>
-                </div>
-                {/* Right: Two stacked sections (40%) */}
-                <div className="w-full md:w-[40%] flex flex-col gap-6 items-center md:items-start px-4">
-                    {/* Top Section */}
-                    <div className="bg-[var(--color-bg)] bg-opacity-80 rounded-lg p-6 shadow w-full">
-                        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--color-primary)]">Welcome to Suggest-IQ</h1>
-                        <p className="mb-4 text-lg text-[var(--color-text)]">Get the best product recommendations and share your experiences with our community.</p>
-                        <a href="/queries" className="button-filled p-3">See Queries</a>
-                    </div>
-                    {/* Bottom Section */}
-                    <div className="bg-[var(--color-secondary)] bg-opacity-90 rounded-lg p-6 shadow w-full flex flex-col items-start">
-                        <h2 className="text-xl font-semibold mb-2 text-[var(--color-accent)]">Why Use Suggest-IQ?</h2>
-                        <ul className="list-disc pl-5 text-[var(--color-text-light)]">
-                            <li>Real user reviews and recommendations</li>
-                            <li>Find the best products for your needs</li>
-                            <li>Share your own experiences and help others</li>
-                        </ul>
+
+                    {/* Right: Two stacked sections (40%) */}
+                    <div className="w-full md:w-[40%] flex flex-col gap-6">
+                        {/* Top Section */}
+                        <div className="bg-[var(--color-bg)] bg-opacity-80 rounded-lg p-6 shadow w-full">
+                            <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--color-primary)]">
+                                Welcome to Suggest-IQ
+                            </h1>
+                            <p className="mb-4 text-md text-[var(--color-text)]">
+                                Get the best product recommendations and share your experiences with our community.
+                            </p>
+                            <a href="/queries" className="btn btn-primary text-color-text-light p-3">
+                                See Queries
+                            </a>
+                        </div>
+
+                        {/* Bottom Section */}
+                        <div className="bg-[var(--color-secondary)] bg-opacity-90 rounded-lg p-6 shadow w-full flex flex-col items-start">
+                            <h2 className="text-xl font-semibold mb-2 text-[var(--color-accent)]">
+                                Why Use Suggest-IQ?
+                            </h2>
+                            <ul className="list-disc pl-5 text-[var(--color-text-light)]">
+                                <li>Real user reviews and recommendations</li>
+                                <li>Find the best products for your needs</li>
+                                <li>Share your own experiences and help others</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </section>
+
+
 
             {/* 2. Featured Products/Queries */}
             <section className="max-w-7xl mx-auto py-10 px-4">
@@ -115,7 +129,7 @@ const Home = () => {
                         placeholder="Your email"
                         className="px-4 py-2 rounded-l border-none"
                     />
-                    <button type="submit" className="button-filled p-4">Subscribe</button>
+                    <button type="submit" className="btn btn-primary text-color-text-light p-4">Subscribe</button>
                 </form>
                 <p className="mt-2 text-xs opacity-80">We respect your privacy. Unsubscribe at any time.</p>
             </section>

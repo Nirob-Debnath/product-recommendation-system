@@ -74,7 +74,7 @@ const Queries = () => {
                                 <p className="text-sm font-medium mb-2">Recommendations: {(typeof query.recommendationCount === 'number' ? query.recommendationCount : (query.likes ? query.likes.length : 0))}</p>
                                 <div className="card-actions mt-auto w-full flex justify-center">
                                     <Link to={`/viewdetails/${query._id}`}>
-                                        <button className="btn btn-primary w-full">View Details</button>
+                                        <button className="btn btn-primary text-color-text-light w-full">View Details</button>
                                     </Link>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ const Queries = () => {
             {totalPages > 1 && (
                 <div className="flex justify-center mt-8 gap-2 flex-wrap">
                     <button
-                        className="btn btn-sm"
+                        className="btn btn-primary text-color-text-light btn-sm"
                         onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
                         disabled={currentPage === 1}
                     >
@@ -96,14 +96,14 @@ const Queries = () => {
                     {Array.from({ length: totalPages }, (_, i) => (
                         <button
                             key={i}
-                            className={`btn btn-sm ${currentPage === i + 1 ? 'btn-primary' : 'btn-outline'}`}
+                            className={`btn btn-primary text-color-text-light btn-sm ${currentPage === i + 1 ? 'btn-active' : ''}`}
                             onClick={() => setCurrentPage(i + 1)}
                         >
                             {i + 1}
                         </button>
                     ))}
                     <button
-                        className="btn btn-sm"
+                        className="btn btn-primary text-color-text-light btn-sm"
                         onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
                         disabled={currentPage === totalPages}
                     >

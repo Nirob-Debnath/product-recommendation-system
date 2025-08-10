@@ -47,7 +47,7 @@ const RecommendationsForMe = () => {
     };
 
     return (
-        <div className="min-h-screen p-6">
+    <div className="min-h-screen p-6 px-4 md:px-8">
             <h2 className="text-2xl font-bold mb-6 text-center">Top Recommended Products</h2>
             <div className="flex justify-center mb-6">
                 <input
@@ -79,7 +79,7 @@ const RecommendationsForMe = () => {
                                 <p className="text-sm text-gray-600 mb-1">Alternative: {prod.alternativeproduct || '-'}</p>
                                 <p className="text-sm font-medium mb-2">Recommendations: {typeof prod.recommendationCount === 'number' ? prod.recommendationCount : (prod.likes ? prod.likes.length : 0)}</p>
                                 <div className="card-actions mt-auto w-full flex justify-center">
-                                    <Link to={`/viewdetails/${prod._id}`} className="btn btn-primary w-full">View Details</Link>
+                                    <Link to={`/viewdetails/${prod._id}`} className="btn btn-primary text-color-text-light w-full">View Details</Link>
                                 </div>
                             </div>
                         </div>
@@ -89,17 +89,17 @@ const RecommendationsForMe = () => {
             {/* Pagination */}
             {totalPages > 1 && (
                 <div className="flex justify-center mt-8 gap-2">
-                    <button className="btn" onClick={() => handlePage(page - 1)} disabled={page === 1}>Prev</button>
+                    <button className="btn btn-primary text-color-text-light" onClick={() => handlePage(page - 1)} disabled={page === 1}>Prev</button>
                     {[...Array(totalPages)].map((_, idx) => (
                         <button
                             key={idx}
-                            className={`btn ${page === idx + 1 ? 'btn-active btn-primary' : ''}`}
+                            className={`btn btn-primary text-color-text-light ${page === idx + 1 ? 'btn-active' : ''}`}
                             onClick={() => handlePage(idx + 1)}
                         >
                             {idx + 1}
                         </button>
                     ))}
-                    <button className="btn" onClick={() => handlePage(page + 1)} disabled={page === totalPages}>Next</button>
+                    <button className="btn btn-primary text-color-text-light" onClick={() => handlePage(page + 1)} disabled={page === totalPages}>Next</button>
                 </div>
             )}
         </div>

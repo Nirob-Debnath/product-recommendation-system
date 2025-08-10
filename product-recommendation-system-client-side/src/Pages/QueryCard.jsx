@@ -3,13 +3,12 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const QueryCard = ({ query, querys, setQuery }) => {
-    const { _id, productname, productbrand, productimageurl, alternativeproduct, boycottreason, additionalnotes } = query;
+    const { _id, productname, productbrand, productimageurl, alternativeproduct } = query;
 
     const handleDelete = (_id) => {
-        console.log(_id);
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "This action cannot be undone!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -25,37 +24,58 @@ const QueryCard = ({ query, querys, setQuery }) => {
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your query has been deleted.",
                                 icon: "success"
                             });
-                            //remove query from the state
                             const remainingQueries = querys.filter(que => que._id !== _id);
                             setQuery(remainingQueries);
                         }
-                    })
+                    });
             }
         });
-    }
+    };
+
+    // Define a single button color class for all buttons
+    const btnColorClass = "bg-blue-600 hover:bg-blue-700";
 
     return (
-        <div>
-            <div className="card bg-base-100 w-96 shadow-sm">
-                <figure>
-                    <img className="object-cover h-48 w-full" src={productimageurl} alt="Shoes" />
-                </figure>
-                <div className="card-body">
-                    <h2 className="card-title">{productname}</h2>
-                    <p>Product Brand: {productbrand}</p>
-                    <p>Alternative Product: {alternativeproduct}</p>
-                    <p>Boycott Reason: {boycottreason}</p>
-                    <p>Additional Notes: {additionalnotes}</p>
-                    <div className="card-actions justify-end">
-                        <div className="join space-x-2 join-vertical lg:join-horizontal">
-                            <Link to={`/viewdetails/${_id}`}><button className="btn join-item">View Details</button></Link>
-                            <Link to={`/updatedetails/${_id}`}><button className="btn join-item">Edit</button></Link>
-                            <button onClick={() => handleDelete(_id)} className="btn join-item">Delete</button>
-                        </div>
-                    </div>
+        <div className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden border border-gray-100
+            flex flex-col justify-between h-[400px]">
+            {/* Image */}
+            <figure className="relative">
+                <img
+                    className="object-cover h-40 w-full"
+                    src={productimageurl}
+                    alt={productname}
+                />
+            </figure>
+
+            {/* Card Body */}
+            <div className="p-4 flex flex-col justify-between flex-grow">
+                <div>
+                    <h2 className="text-lg font-semibold text-gray-800 mb-2 truncate">{productname}</h2>
+                    <p className="text-sm text-gray-600"><span className="font-medium">Brand:</span> {productbrand}</p>
+                    <p className="text-sm text-gray-600"><span className="font-medium">Alternative:</span> {alternativeproduct}</p>
+                </div>
+
+                {/* Buttons */}
+                <div className="flex justify-between mt-4 gap-2">
+                    <Link to={`/viewdetails/${_id}`} className="flex-1 min-w-0">
+                        <button className={`w-full btn text-white ${btnColorClass}`}>
+                            View
+                        </button>
+                    </Link>
+                    <Link to={`/updatedetails/${_id}`} className="flex-1 min-w-0">
+                        <button className={`w-full btn text-white ${btnColorClass}`}>
+                            Edit
+                        </button>
+                    </Link>
+                    <button
+                        onClick={() => handleDelete(_id)}
+                        className={`flex-1 btn text-white w-full min-w-0 ${btnColorClass}`}
+                    >
+                        Delete
+                    </button>
                 </div>
             </div>
         </div>
