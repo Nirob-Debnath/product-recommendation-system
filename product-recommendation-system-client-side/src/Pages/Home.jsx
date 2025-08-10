@@ -1,6 +1,7 @@
 import React from "react";
 import SwiperComponent from "./Swiper";
 import QueryCardHome from "./QueryCardHome";
+import RecentQueries from "./RecentQueries";
 
 const Home = () => {
     return (
@@ -43,39 +44,7 @@ const Home = () => {
             {/* 3. Recent Queries */}
             <section className="max-w-7xl mx-auto py-10 px-4">
                 <h2 className="text-2xl font-bold mb-6 text-center">Recent Queries</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    {/* Example query cards */}
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col">
-                        <h3 className="font-semibold text-lg mb-1">Is there a better eco-friendly bottle?</h3>
-                        <p className="text-sm mb-2">Looking for alternatives to EcoSmart Water Bottle with similar features.</p>
-                        <a href="/queries/1" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col">
-                        <h3 className="font-semibold text-lg mb-1">Best fitness tracker for swimming?</h3>
-                        <p className="text-sm mb-2">Need a waterproof tracker with heart rate monitoring.</p>
-                        <a href="/queries/2" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col">
-                        <h3 className="font-semibold text-lg mb-1">Affordable wireless earbuds?</h3>
-                        <p className="text-sm mb-2">Seeking budget-friendly earbuds with good sound quality.</p>
-                        <a href="/queries/3" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col">
-                        <h3 className="font-semibold text-lg mb-1">Laptop for graphic design?</h3>
-                        <p className="text-sm mb-2">Recommendations for a laptop with a great display and performance.</p>
-                        <a href="/queries/4" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col">
-                        <h3 className="font-semibold text-lg mb-1">Best noise-cancelling headphones?</h3>
-                        <p className="text-sm mb-2">Looking for headphones that block out background noise effectively.</p>
-                        <a href="/queries/5" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-bg)] dark:bg-[var(--color-bg-dark)] text-[var(--color-text)] rounded-lg shadow p-4 flex flex-col">
-                        <h3 className="font-semibold text-lg mb-1">Tablet for note-taking?</h3>
-                        <p className="text-sm mb-2">Suggestions for a tablet with stylus support for students.</p>
-                        <a href="/queries/6" className="button-outline">See more</a>
-                    </div>
-                </div>
+                <RecentQueries />
             </section>
 
             {/* 4. How It Works */}

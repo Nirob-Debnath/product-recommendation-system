@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { FaThumbsUp } from 'react-icons/fa';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
-const QueryCardHome = ({ showSearch = true, limit }) => {
+const RecentQueries = () => {
     const [queries, setQueries] = useState([]);
     const [user, setUser] = useState(null);
     const [likesData, setLikesData] = useState({});
-    const [searchTerm, setSearchTerm] = useState('');
+    const [showAll, setShowAll] = useState(false);
 
     useEffect(() => {
         const auth = getAuth();
@@ -48,16 +47,7 @@ const QueryCardHome = ({ showSearch = true, limit }) => {
         }
     };
 
-    const filteredQueries = queries.filter((query) => {
-        const lowerSearch = searchTerm.toLowerCase();
-        return (
-            (query.productname && query.productname.toLowerCase().includes(lowerSearch)) ||
-            (query.productbrand && query.productbrand.toLowerCase().includes(lowerSearch)) ||
-            (query.refinedproduct && query.refinedproduct.toLowerCase().includes(lowerSearch)) ||
-            (query.boycottreason && query.boycottreason.toLowerCase().includes(lowerSearch)) ||
-            (query.additionalnotes && query.additionalnotes.toLowerCase().includes(lowerSearch))
-        );
-    });
+    const displayQueries = showAll ? queries : queries.slice(0, 12);
 
     if (!Array.isArray(queries)) {
         return (
@@ -67,30 +57,13 @@ const QueryCardHome = ({ showSearch = true, limit }) => {
         );
     }
 
-    // Skip the first 30 queries (shown in RecentQueries)
-    const filteredAfter30 = filteredQueries.slice(30);
-    const cardsToShow = limit ? filteredAfter30.slice(0, limit) : filteredAfter30;
-    const showSeeMore = limit && filteredAfter30.length > limit;
-
     return (
         <div>
-            {showSearch !== false && (
-                <div className="flex justify-center mb-6">
-                    <input
-                        type="text"
-                        placeholder="Search by product name, brand, reason..."
-                        className="input input-bordered w-full max-w-xl"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-            )}
-
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-                {cardsToShow.length === 0 ? (
+                {displayQueries.length === 0 ? (
                     <p className="text-center col-span-full">No queries found.</p>
                 ) : (
-                    cardsToShow.map((query) => {
+                    displayQueries.map((query) => {
                         const {
                             _id,
                             productname,
@@ -99,9 +72,7 @@ const QueryCardHome = ({ showSearch = true, limit }) => {
                             alternativeproduct,
                             likes = [],
                         } = query;
-
                         const liked = (likesData[_id] || likes).includes(user?.uid);
-
                         return (
                             <div key={_id} className="card bg-base-100 w-full max-w-[200px] min-h-[320px] shadow-sm mx-auto flex flex-col">
                                 <figure>
@@ -115,13 +86,12 @@ const QueryCardHome = ({ showSearch = true, limit }) => {
                                     <h2 className="card-title">{productname}</h2>
                                     <p>Brand: {productbrand}</p>
                                     <p>Alternative: {alternativeproduct}</p>
-
                                     <div className="flex justify-center gap-1 mt-2">
                                         <button
                                             onClick={() => handleLike(_id)}
                                             className={`btn ${liked ? 'btn-success' : 'btn-outline'}`}
                                         >
-                                            <FaThumbsUp /> {(likesData[_id]?.length || likes.length)}
+                                            <FaThumbsUp className="mr-2" /> {(likesData[_id]?.length || likes.length)}
                                         </button>
                                         <Link to={`/viewdetails/${_id}`} className="btn btn-info">
                                             View Details
@@ -133,14 +103,16 @@ const QueryCardHome = ({ showSearch = true, limit }) => {
                     })
                 )}
             </div>
-
-            {showSeeMore && (
+            {/* See More button if there are more than 12 queries and not showing all */}
+            {!showAll && queries.length > 12 && (
                 <div className="flex justify-center mt-6">
-                    <a href="/queries" className="button-filled px-6 py-2">See More</a>
+                    <button className="button-filled px-6 py-2" onClick={() => setShowAll(true)}>
+                        See More
+                    </button>
                 </div>
             )}
         </div>
     );
 };
 
-export default QueryCardHome;
+export default RecentQueries;
