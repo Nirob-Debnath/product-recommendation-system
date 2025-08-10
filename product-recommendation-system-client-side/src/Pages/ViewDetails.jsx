@@ -141,7 +141,7 @@ const ViewDetails = () => {
             <h1 className="text-3xl font-bold text-center mb-6">Product Details</h1>
 
             <div className="grid md:grid-cols-2 gap-6">
-                <img src={productimageurl} alt={productname} className="rounded-lg shadow-md" />
+                <img src={productimageurl} alt={productname} className="rounded-lg shadow-md h-64 w-full object-fit" />
                 <div>
                     <h2 className="text-2xl font-semibold mb-2">{productname}</h2>
                     <p><strong>Brand:</strong> {productbrand}</p>
