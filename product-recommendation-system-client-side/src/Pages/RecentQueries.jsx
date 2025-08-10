@@ -90,8 +90,9 @@ const RecentQueries = () => {
                                         <button
                                             onClick={() => handleLike(_id)}
                                             className={`btn ${liked ? 'btn-success' : 'btn-outline'}`}
+                                            title="Recommendations"
                                         >
-                                            <FaThumbsUp className="mr-2" /> {(likesData[_id]?.length || likes.length)}
+                                            <FaThumbsUp className="mr-2" /> {(typeof query.recommendationCount === 'number' ? query.recommendationCount : (likesData[_id]?.length || likes.length))}
                                         </button>
                                         <Link to={`/viewdetails/${_id}`} className="btn btn-info">
                                             View Details

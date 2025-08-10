@@ -13,10 +13,46 @@ const ViewDetails = () => {
         boycottreason,
         additionalnotes,
         likes = [],
-        comments = []
+        comments = [],
+        name,
+        createdAt,
+        recommendationCount
     } = useLoaderData();
-
     const [user, setUser] = useState(null);
+    // const [recommendCount, setRecommendCount] = useState(0);
+    // const [hasRecommended, setHasRecommended] = useState(false);
+
+    // useEffect(() => {
+    //     const fetchRecommend = async () => {
+    //         try {
+    //             const res = await axios.get(`https://productrecommendationsystem.vercel.app/addquery/${_id}`);
+    //             const data = res.data;
+    //             setRecommendCount((data.recommended || []).length);
+    //             setHasRecommended(user ? (data.recommended || []).includes(user.uid) : false);
+    //         } catch {
+    //             setRecommendCount(0);
+    //             setHasRecommended(false);
+    //         }
+    //     };
+    //     fetchRecommend();
+    // }, [_id, user]);
+
+    // const handleRecommend = async () => {
+    //     if (!user) return alert('Please login to recommend.');
+    //     try {
+    //         const res = await axios.patch(`https://productrecommendationsystem.vercel.app/addquery/${_id}/recommend`, {
+    //             userId: user.uid,
+    //         });
+    //         if (res.data.success) {
+    //             setRecommendCount(res.data.recommended.length);
+    //             setHasRecommended(res.data.recommended.includes(user.uid));
+    //         }
+    //     } catch (err) {
+    //         console.error(err);
+    //     }
+    // };
+
+    // removed duplicate user state
     const [currentLikes, setCurrentLikes] = useState(likes);
     const [currentComments, setCurrentComments] = useState(comments);
     const [newComment, setNewComment] = useState('');
@@ -107,18 +143,20 @@ const ViewDetails = () => {
             <div className="grid md:grid-cols-2 gap-6">
                 <img src={productimageurl} alt={productname} className="rounded-lg shadow-md" />
                 <div>
-                    <h2 className="text-2xl font-semibold">{productname}</h2>
+                    <h2 className="text-2xl font-semibold mb-2">{productname}</h2>
                     <p><strong>Brand:</strong> {productbrand}</p>
                     <p><strong>Alternative Product:</strong> {alternativeproduct}</p>
                     <p><strong>Boycott Reason:</strong> {boycottreason}</p>
                     {additionalnotes && <p><strong>Additional Notes:</strong> {additionalnotes}</p>}
+                    <p className="mt-2"><strong>Query Creator:</strong> {name || 'Anonymous'}</p>
+                    <p><strong>Created At:</strong> {createdAt ? new Date(createdAt).toLocaleString() : '-'}</p>
 
-                    <div className="mt-4">
+                    <div className="mt-4 flex gap-4">
                         <button
                             onClick={handleLike}
                             className={`px-4 py-2 rounded ${hasLiked ? 'bg-red-500' : 'bg-blue-500'} text-white`}
                         >
-                            {hasLiked ? 'Unlike' : 'Like'} ({currentLikes.length})
+                            {hasLiked ? 'Remove Recommendation' : 'Recommend'} ({typeof recommendationCount === 'number' ? recommendationCount : currentLikes.length})
                         </button>
                     </div>
                 </div>

@@ -71,7 +71,7 @@ const Queries = () => {
                                 <h2 className="card-title text-base font-semibold mb-1">{query.querytitle || 'No Title'}</h2>
                                 <p className="text-sm text-gray-600 mb-1">Brand: {query.productbrand}</p>
                                 <p className="text-sm text-gray-600 mb-1">Alternative: {query.alternativeproduct || '-'}</p>
-                                <p className="text-sm font-medium mb-2">Recommendations: {query.recommendationCount || 0}</p>
+                                <p className="text-sm font-medium mb-2">Recommendations: {(typeof query.recommendationCount === 'number' ? query.recommendationCount : (query.likes ? query.likes.length : 0))}</p>
                                 <div className="card-actions mt-auto w-full flex justify-center">
                                     <Link to={`/viewdetails/${query._id}`}>
                                         <button className="btn btn-primary w-full">View Details</button>

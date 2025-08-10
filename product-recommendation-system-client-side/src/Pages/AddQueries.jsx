@@ -23,7 +23,7 @@ const AddQueries = () => {
             name: user?.displayName || 'Anonymous',
             userImage: user?.photoURL || '',
             createdAt: new Date().toISOString(),
-            recommendationCount: 0,
+
         };
 
         try {
