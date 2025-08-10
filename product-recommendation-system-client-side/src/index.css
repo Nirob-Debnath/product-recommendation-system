@@ -3,13 +3,20 @@
 @import "flowbite/src/themes/default";
 
 :root {
-    --color-primary: #6366f1;     /* Indigo-500 */
-    --color-secondary: #334155;    /* Slate-700 */
-    --color-accent: #fbbf24;      /* Amber-400 */
-    --color-bg: #f9fafb;          /* Gray-50 */
-    --color-bg-dark: #18181b;     /* Gray-900 */
-    --color-text: #18181b;        /* Gray-900 */
-    --color-text-light: #f9fafb;  /* Gray-50 */
+    --color-primary: #6366f1;
+    /* Indigo-500 */
+    --color-secondary: #334155;
+    /* Slate-700 */
+    --color-accent: #fbbf24;
+    /* Amber-400 */
+    --color-bg: #fff;
+    /* White for best contrast in light mode */
+    --color-bg-dark: #18181b;
+    /* Gray-900 */
+    --color-text: #111827;
+    /* Gray-900, even darker for better contrast */
+    --color-text-light: #f9fafb;
+    /* Gray-50 */
     --border-radius: 12px;
 }
 
