@@ -48,7 +48,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Center: Desktop Menu */}
-                <ul className="hidden md:flex items-center gap-6 text-base font-medium flex-grow justify-center">
+                <ul className="hidden md:flex items-center gap-3 text-base font-medium flex-grow justify-center">
                     {links}
                 </ul>
 
@@ -58,7 +58,7 @@ const NavBar = () => {
                         {theme === 'light' ? '🌙' : '☀️'}
                     </button>
                     {user && (
-                        <button onClick={handleSignOut} className="button-filled">Sign Out</button>
+                        <button onClick={handleSignOut} className="button-filled btn">Sign Out</button>
                     )}
                     {/* Mobile Menu */}
                     <div className="md:hidden dropdown">

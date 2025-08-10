@@ -1,5 +1,6 @@
 import React from "react";
 import SwiperComponent from "./Swiper";
+import QueryCardHome from "./QueryCardHome";
 
 const Home = () => {
     return (
@@ -18,7 +19,7 @@ const Home = () => {
                     <div className="bg-[var(--color-bg)] bg-opacity-80 rounded-lg p-6 shadow w-full">
                         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-[var(--color-primary)]">Welcome to Suggest-IQ</h1>
                         <p className="mb-4 text-lg text-[var(--color-text)]">Get the best product recommendations and share your experiences with our community.</p>
-                        <a href="/queries" className="button-filled">See Queries</a>
+                        <a href="/queries" className="button-filled p-3">See Queries</a>
                     </div>
                     {/* Bottom Section */}
                     <div className="bg-[var(--color-secondary)] bg-opacity-90 rounded-lg p-6 shadow w-full flex flex-col items-start">
@@ -35,27 +36,8 @@ const Home = () => {
             {/* 2. Featured Products/Queries */}
             <section className="max-w-7xl mx-auto py-10 px-4">
                 <h2 className="text-2xl font-bold mb-6 text-center">Featured Products</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    {/* Example featured product cards */}
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col items-center">
-                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=200&q=80" alt="Product 1" className="h-24 w-24 object-cover rounded mb-2" />
-                        <h3 className="font-semibold text-lg mb-1">EcoSmart Water Bottle</h3>
-                        <p className="text-sm text-center mb-2">Keeps your drinks hot or cold for hours. Eco-friendly and stylish.</p>
-                        <a href="/products/1" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col items-center">
-                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=200&q=80" alt="Product 2" className="h-24 w-24 object-cover rounded mb-2" />
-                        <h3 className="font-semibold text-lg mb-1">Smart Fitness Tracker</h3>
-                        <p className="text-sm text-center mb-2">Track your health and activity with real-time insights and recommendations.</p>
-                        <a href="/products/2" className="button-outline">See more</a>
-                    </div>
-                    <div className="bg-[var(--color-primary)] text-[var(--color-text-light)] rounded-lg shadow p-4 flex flex-col items-center">
-                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=200&q=80" alt="Product 3" className="h-24 w-24 object-cover rounded mb-2" />
-                        <h3 className="font-semibold text-lg mb-1">Wireless Earbuds</h3>
-                        <p className="text-sm text-center mb-2">Enjoy high-quality sound and noise cancellation on the go.</p>
-                        <a href="/products/3" className="button-outline">See more</a>
-                    </div>
-                </div>
+                {/* Use QueryCardHome to display dynamic featured products/queries */}
+                <QueryCardHome showSearch={false} limit={12} />
             </section>
 
             {/* 3. Recent Queries */}

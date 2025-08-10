@@ -41,7 +41,7 @@ const QueryCard = ({ query, querys, setQuery }) => {
         <div>
             <div className="card bg-base-100 w-96 shadow-sm">
                 <figure>
-                    <img src={productimageurl} alt="Shoes" />
+                    <img className="object-cover h-48 w-full" src={productimageurl} alt="Shoes" />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{productname}</h2>

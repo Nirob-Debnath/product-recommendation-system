@@ -9,7 +9,7 @@ const ViewDetails = () => {
         productname,
         productbrand,
         productimageurl,
-        refinedproduct,
+        alternativeproduct,
         boycottreason,
         additionalnotes,
         likes = [],
@@ -109,7 +109,7 @@ const ViewDetails = () => {
                 <div>
                     <h2 className="text-2xl font-semibold">{productname}</h2>
                     <p><strong>Brand:</strong> {productbrand}</p>
-                    <p><strong>Refined Product:</strong> {refinedproduct}</p>
+                    <p><strong>Alternative Product:</strong> {alternativeproduct}</p>
                     <p><strong>Boycott Reason:</strong> {boycottreason}</p>
                     {additionalnotes && <p><strong>Additional Notes:</strong> {additionalnotes}</p>}
 
